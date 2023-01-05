@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.cart.CartFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/cart"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_lg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/clear_carts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:drawablePadding="@dimen/_8sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/clear_cart"
+        android:textColor="@color/red_100"
+        android:textSize="@dimen/font_lg"
+        app:drawableStartCompat="@drawable/ic_delete"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cart_exist_parent"
+        android:visibility="gone"
+        app:constraint_referenced_ids="clear_carts, btn_checkout"
+        />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cart"
+        android:paddingBottom="@dimen/_6sdp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cart_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_promo_code"
+                android:padding="@dimen/_12sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/no_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="no_cart_bag_img,
+                no_cart_text, no_cart_text2,
+                no_cart_explore_more" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/cart_exist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="cart_recycler_view, tv_summary_payment,
+                subtotal_price, subtotal_price, total_price, total_price, subtotal_text, delivery_fee_price,
+                delivery_fee_text, total_text, apply_promo_code, tv_promo_code, ed_promo_code" />
+
+
+            <ImageView
+                android:id="@+id/no_cart_bag_img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:src="@drawable/ic_cart_bag"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.35" />
+
+            <TextView
+                android:id="@+id/no_cart_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/no_cart_text_1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/font_md"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/no_cart_bag_img" />
+
+            <TextView
+                android:id="@+id/no_cart_text2"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/roboto"
+                android:maxLines="2"
+                android:text="@string/no_cart_text_2"
+                android:textAlignment="center"
+                android:textSize="@dimen/font_sm"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/no_cart_text" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/no_cart_explore_more"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="@dimen/_220sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/explore_our_products"
+                android:textAllCaps="false"
+                android:textColor="@color/green_100"
+                android:textSize="@dimen/font_md"
+                app:icon="@drawable/ic_buy"
+                app:iconGravity="textStart"
+                app:iconTint="@color/green_100"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/no_cart_text2"
+                app:strokeColor="@color/green_100"
+                app:strokeWidth="@dimen/_1sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/promo_code"
+                android:textSize="@dimen/font_lg"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/cart_recycler_view"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:id="@+id/tv_promo_code"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_search_shape"
+                android:hint="@string/promo_hint"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_promo_code"
+                android:layout_margin="@dimen/_12sdp"
+                android:id="@+id/ed_promo_code"
+                app:layout_constraintRight_toLeftOf="@id/apply_promo_code"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_medium"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ed_promo_code"
+                app:layout_constraintBottom_toBottomOf="@id/ed_promo_code"
+                android:textSize="@dimen/font_lg"
+                android:textColor="@color/green_100"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:id="@+id/apply_promo_code"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/ed_promo_code"
+                android:textSize="@dimen/font_lg"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:text="@string/summary_payment"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_margin="@dimen/_12sdp"
+                android:id="@+id/tv_summary_payment"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subtotal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_summary_payment"
+                android:textSize="@dimen/font_md"
+                android:fontFamily="@font/roboto"
+                android:layout_margin="@dimen/_12sdp"
+                android:id="@+id/subtotal_text"
+                />
+
+            <TextView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_md"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintRight_toRightOf="parent"
+                android:id="@+id/subtotal_price"
+                app:layout_constraintTop_toTopOf="@id/subtotal_text"
+                tools:text="354 EGP"
+                android:maxLines="1"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:gravity="end"
+                />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/discount"
+                app:layout_constraintLeft_toLeftOf="@id/subtotal_text"
+                app:layout_constraintTop_toBottomOf="@id/subtotal_text"
+                android:textSize="@dimen/font_md"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:id="@+id/discount_text"
+                />
+
+            <TextView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_md"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintRight_toRightOf="@id/subtotal_price"
+                android:id="@+id/discount_price"
+                app:layout_constraintTop_toTopOf="@id/discount_text"
+                tools:text="-50 EGP"
+                android:maxLines="1"
+                android:gravity="end"
+                />
+
+            <androidx.constraintlayout.widget.Group
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="discount_price, discount_text"
+                android:id="@+id/discount_views"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delivery_fee"
+                app:layout_constraintLeft_toLeftOf="@id/subtotal_text"
+                app:layout_constraintTop_toBottomOf="@id/discount_text"
+                android:textSize="@dimen/font_md"
+                android:fontFamily="@font/roboto"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:id="@+id/delivery_fee_text"
+                />
+
+            <TextView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_md"
+                android:fontFamily="@font/roboto"
+                app:layout_constraintRight_toRightOf="@id/subtotal_price"
+                android:id="@+id/delivery_fee_price"
+                app:layout_constraintTop_toTopOf="@id/delivery_fee_text"
+                tools:text="20 EGP"
+                android:maxLines="1"
+                android:gravity="end"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total"
+                app:layout_constraintLeft_toLeftOf="@id/subtotal_text"
+                app:layout_constraintTop_toBottomOf="@id/delivery_fee_text"
+                android:textSize="@dimen/font_lg"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:id="@+id/total_text"
+                />
+
+            <TextView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_lg"
+                android:fontFamily="@font/roboto_medium"
+                app:layout_constraintRight_toRightOf="@id/subtotal_price"
+                android:id="@+id/total_price"
+                app:layout_constraintTop_toTopOf="@id/total_text"
+                android:textColor="@color/black"
+                tools:text="400 EGP"
+                android:maxLines="1"
+                android:gravity="end"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_checkout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/_16sdp"
+        android:text="@string/checkout"
+        android:gravity="center"
+        android:textSize="@dimen/font_lg"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:background="@drawable/checkout_shape"
+        />
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/cart_progress"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:alpha="0.5"
+        android:id="@+id/cart_background_view"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/update_quantity_progress"
+        android:visibility="gone"
+        />
+
+</FrameLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.maps.MapsFragment">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/activity_main" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/item_dashboard_background"
+        android:maxWidth="@dimen/_70sdp"
+        android:maxHeight="@dimen/_40sdp"
+        android:drawableStart="@drawable/ic_delivery_address"
+        android:drawableTint="@color/colorPrimaryText"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="1dp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:text="   .........."
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.0"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/frameLayout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/_120sdp"-->
+    <!--        android:background="@color/white"-->
+    <!--        map:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        tools:layout_editor_absoluteX="46dp">-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_address"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="@dimen/_50sdp"-->
+    <!--            android:layout_margin="@dimen/_5sdp"-->
+    <!--            android:maxWidth="@dimen/_70sdp"-->
+    <!--            android:maxHeight="@dimen/_40sdp"-->
+    <!--            android:text=".........."-->
+    <!--            android:textSize="@dimen/_12ssp"-->
+    <!--            android:textStyle="bold" />-->
+
+    <ImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:contentDescription="@string/pin"
+        android:src="@drawable/locationb"
+        map:layout_constraintBottom_toBottomOf="@+id/map"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.498"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="@+id/map"
+        map:layout_constraintVertical_bias="0.472" />
+
+    <Button
+        android:id="@+id/btn_save_address"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginBottom="94dp"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:fontFamily="@font/roboto_bold"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:background="@drawable/background_checkout_button"
+        android:gravity="center"
+        android:text="@string/btn_confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_xlg"
+        map:layout_constraintBottom_toBottomOf="@+id/map"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.476"
+        map:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+

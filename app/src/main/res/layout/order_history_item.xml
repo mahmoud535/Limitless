@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingEnd="@dimen/_8sdp"
+    android:paddingStart="@dimen/_8sdp"
+    android:paddingTop="@dimen/_8sdp"
+    android:paddingBottom="@dimen/_8sdp"
+    >
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:id="@+id/cart_bag_icon"
+        android:src="@drawable/ic_order"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Order #1298712"
+        app:layout_constraintTop_toTopOf="@id/cart_bag_icon"
+        app:layout_constraintLeft_toRightOf="@id/cart_bag_icon"
+        android:textSize="@dimen/font_md"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:id="@+id/cart_order_number"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="5 Nov 2022 04:45 Pm"
+        app:layout_constraintTop_toBottomOf="@id/cart_order_number"
+        app:layout_constraintLeft_toLeftOf="@id/cart_order_number"
+        android:textColor="@color/grey_1000"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/font_sm"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:id="@+id/cart_order_date"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="3 items"
+        android:textColor="@color/grey_1000"
+        app:layout_constraintLeft_toLeftOf="@id/cart_order_number"
+        android:textSize="@dimen/font_sm"
+        android:id="@+id/cart_order_items"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintTop_toBottomOf="@id/cart_order_date"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="On going"
+        app:layout_constraintTop_toTopOf="@id/cart_order_number"
+        app:layout_constraintRight_toLeftOf="@id/cart_order_details"
+        android:textSize="@dimen/font_sm"
+        android:textColor="@color/brown"
+        android:background="@drawable/order_state_ongoing"
+        android:id="@+id/cart_order_state"
+        android:layout_marginEnd="@dimen/_4sdp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintTop_toTopOf="@id/cart_order_state"
+        app:layout_constraintBottom_toBottomOf="@id/cart_order_state"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/cart_order_details"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Total: 324 EGP"
+        android:textSize="@dimen/font_md"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/cart_order_items"
+        app:layout_constraintRight_toRightOf="@+id/cart_order_details"
+        android:id="@+id/cart_total_price"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/cart_order_state"
+        />
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cart_order_items"
+        app:dividerInsetStart="@dimen/_10sdp"
+        app:dividerInsetEnd="@dimen/_10sdp"
+        android:id="@+id/divider"
+        app:dividerColor="@color/grey_1000"
+        android:layout_marginTop="@dimen/_25sdp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

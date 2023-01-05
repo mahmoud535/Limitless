@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+
+        >
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true">
+
+                <Toolbar
+                    android:id="@+id/toolBar"
+                    android:layout_width="0dp"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:elevation="0dp"
+                    android:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                    android:title="@string/product_description_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/small_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/grey_700"
+                    android:textSize="@dimen/font_md"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolBar" />
+
+                <TextView
+                    android:id="@+id/ingredients_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/ingredients_label"
+                    android:textSize="@dimen/font_md"
+                    app:layout_constraintEnd_toEndOf="@id/small_description"
+                    app:layout_constraintStart_toStartOf="@id/small_description"
+                    app:layout_constraintTop_toBottomOf="@id/small_description" />
+
+                <TextView
+                    android:id="@+id/ingredients_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@color/grey_700"
+                    android:textSize="@dimen/font_sm"
+                    app:layout_constraintStart_toStartOf="@id/small_description"
+                    app:layout_constraintTop_toBottomOf="@id/ingredients_title" />
+
+                <TextView
+                    android:id="@+id/forms_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/forms_label"
+                    android:textSize="@dimen/font_md"
+                    app:layout_constraintStart_toStartOf="@id/small_description"
+                    app:layout_constraintTop_toBottomOf="@id/ingredients_text" />
+
+                <TextView
+                    android:id="@+id/forms_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@color/grey_700"
+                    android:textSize="@dimen/font_sm"
+                    app:layout_constraintStart_toStartOf="@id/small_description"
+                    app:layout_constraintTop_toBottomOf="@id/forms_title" />
+
+
+                <TextView
+                    android:id="@+id/doses_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/doses_label"
+                    android:textSize="@dimen/font_md"
+                    app:layout_constraintStart_toStartOf="@id/small_description"
+                    app:layout_constraintTop_toBottomOf="@id/forms_text" />
+
+                <TextView
+                    android:id="@+id/doses_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@color/grey_700"
+                    android:textSize="@dimen/font_sm"
+                    app:layout_constraintStart_toStartOf="@id/small_description"
+                    app:layout_constraintTop_toBottomOf="@id/doses_title" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/attributes_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="ingredients_title,ingredients_text,forms_title,forms_text,doses_title,doses_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

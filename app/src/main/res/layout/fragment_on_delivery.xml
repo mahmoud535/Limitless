@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="summary"
+            type="com.evapharma.limitless.domain.model.Summary" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_200"
+        tools:context=".presentation.checkout.payment.OnDeliveryFragment">
+
+
+        <TextView
+            android:id="@+id/payment_summary_payment_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_12sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/summary_payment"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/payment_subtotal_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/subtotal"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintLeft_toLeftOf="@id/payment_summary_payment_txt"
+            app:layout_constraintTop_toBottomOf="@id/payment_summary_payment_txt" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/onDelivery_promo_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="payment_promo_code_price, payment_promo_code_text" />
+
+        <TextView
+            android:id="@+id/payment_promo_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/promo_code"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintLeft_toLeftOf="@id/payment_summary_payment_txt"
+            app:layout_constraintTop_toBottomOf="@id/payment_subtotal_text" />
+
+        <TextView
+            android:id="@+id/payment_delivery_fee_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/delivery_fee"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintLeft_toLeftOf="@id/payment_summary_payment_txt"
+            app:layout_constraintTop_toBottomOf="@id/payment_promo_code_text" />
+
+        <TextView
+            android:id="@+id/payment_subtotal_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:fontFamily="@font/roboto"
+            android:text="@{summary.currency + ` ` + summary.subTotal}"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintBottom_toBottomOf="@id/payment_subtotal_text"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/payment_subtotal_text" />
+
+        <TextView
+            android:id="@+id/payment_promo_code_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text = "@{summary.promoCode}"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintBottom_toBottomOf="@id/payment_promo_code_text"
+            app:layout_constraintRight_toRightOf="@id/payment_subtotal_price"
+            app:layout_constraintTop_toTopOf="@id/payment_promo_code_text" />
+
+        <TextView
+            android:id="@+id/checkout_delivery_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="@{summary.currency + ` ` + summary.deliveryFee}"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintBottom_toBottomOf="@id/payment_delivery_fee_text"
+            app:layout_constraintRight_toRightOf="@id/payment_subtotal_price"
+            app:layout_constraintTop_toTopOf="@id/payment_delivery_fee_text" />
+
+        <TextView
+            android:id="@+id/payment_total_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/total"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintLeft_toLeftOf="@id/payment_summary_payment_txt"
+            app:layout_constraintTop_toBottomOf="@id/payment_delivery_fee_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintBottom_toBottomOf="@id/payment_total_text"
+            app:layout_constraintRight_toRightOf="@id/payment_subtotal_price"
+            app:layout_constraintTop_toTopOf="@id/payment_total_text"
+            android:text="@{summary.currency + ` ` + summary.total}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

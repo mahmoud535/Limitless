@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.evapharma.limitless.presentation.account.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_personalInformationFragment"
+            app:destination="@id/personalInformationFragment" />
+     
+        <action
+            android:id="@+id/action_accountFragment_to_customerLoginActivity"
+            app:destination="@id/customerLoginActivity" />
+        <action
+            android:id="@+id/action_accountFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.evapharma.limitless.presentation.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_cancelSubscriptionFragment"
+            app:destination="@id/cancelSubscriptionFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"
+            />
+        <action
+            android:id="@+id/action_cartFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_customerLoginActivity"
+            app:destination="@id/customerLoginActivity" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/healthFragment"
+        android:name="com.evapharma.limitless.presentation.health.HealthFragment"
+        android:label="fragment_health"
+        tools:layout="@layout/fragment_health" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.evapharma.limitless.presentation.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_offersFragment"
+            app:destination="@id/offersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewAllBundlesFragment"
+            app:destination="@id/viewAllBundlesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_customerLoginActivity"
+            app:destination="@id/customerLoginActivity" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.evapharma.limitless.presentation.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category">
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_categoryFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/cancelSubscriptionFragment"
+        android:name="com.evapharma.limitless.presentation.cart.cancelsub.CancelSubscriptionFragment"
+        android:label="fragment_cancel_subscription"
+        tools:layout="@layout/fragment_cancel_subscription">
+           </dialog>
+    <fragment
+        android:id="@+id/offersFragment"
+        android:name="com.evapharma.limitless.presentation.offers.OffersFragment"
+        android:label="OffersFragment">
+
+        <action
+            android:id="@+id/action_offersFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.evapharma.limitless.presentation.productdetails.ProductDetailsFragment"
+        android:label="ProductDetailsFragment">
+        <argument
+            android:name="productId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_self"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_customerLoginActivity"
+            app:destination="@id/customerLoginActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalInformationFragment"
+        android:name="com.evapharma.limitless.presentation.personalinformation.PersonalInformationFragment"
+        android:label="fragment_personal_information"
+        tools:layout="@layout/fragment_personal_information" >
+        <action
+            android:id="@+id/action_personalInformationFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/viewAllBundlesFragment"
+        android:name="com.evapharma.limitless.presentation.home.bundle.ViewAllBundlesFragment"
+        android:label="fragment_view_all_bundles"
+        tools:layout="@layout/fragment_view_all_bundles" >
+        <action
+            android:id="@+id/action_viewAllBundlesFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.evapharma.limitless.presentation.checkout.summary.SummaryFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_summary" >
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </fragment>
+
+    <activity
+        android:id="@+id/customerLoginActivity"
+        android:name="com.evapharma.limitless.presentation.customer.CustomerLoginActivity"
+        android:label="activity_customer_login"
+        tools:layout="@layout/activity_customer_login" />
+
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.evapharma.limitless.presentation.history.OrderHistoryFragment"
+        android:label="fragment_order_history"
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+
+
+</navigation>

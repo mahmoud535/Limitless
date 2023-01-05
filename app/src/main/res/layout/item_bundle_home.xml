@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemBundle"
+    android:layout_width="@dimen/_160sdp"
+    android:layout_height="@dimen/_250sdp"
+    android:layout_margin="5dp"
+    android:background="@drawable/item_dashboard_background"
+    android:gravity="center"
+    android:padding="1dp">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="image"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/border1" />
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_medium"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_md"
+        app:layout_constraintTop_toBottomOf="@id/iv_item_image"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:text="Item Name"
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto"
+        android:maxLines="1"
+        android:textColor="@color/grey_700"
+        android:textSize="@dimen/font_sm"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        app:layout_constraintRight_toRightOf="@id/tv_title"
+        tools:text="description" />
+
+    <TextView
+        android:id="@+id/tv_Current_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_md"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        app:layout_constraintRight_toRightOf="@id/tv_title"
+        tools:text="100EGP" />
+
+
+    <TextView
+        android:id="@+id/tv_dashboard_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/grey_700"
+        android:textSize="@dimen/font_sm"
+        android:visibility="gone"
+        android:background="@drawable/cross_off_line"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_Current_price"
+        tools:text="302EGP" />
+
+    <TextView
+        android:id="@+id/discount_percent_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:fontFamily="@font/roboto"
+        android:text="55555"
+        android:textColor="@color/green"
+        android:textSize="@dimen/font_sm"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/tv_dashboard_item_price"
+        app:layout_constraintTop_toTopOf="@id/tv_dashboard_item_price" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_addToCart"
+        style="@style/Widget.Material3.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_30sdp"
+        android:backgroundTint="@android:color/transparent"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/add_to_cart_label"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/green_100"
+        android:textSize="@dimen/font_md"
+        app:icon="@drawable/ic_buy"
+        app:iconGravity="textStart"
+        app:iconTint="@color/green_100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
+        app:strokeColor="@color/green_100"
+        app:strokeWidth="@dimen/_1sdp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_addToCart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_addToCart" />
+
+        <TextView
+            android:id="@+id/added_to_cart_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="@string/added_to_cart_label"
+            android:textColor="@color/green"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_addToCart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/progress_bar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+

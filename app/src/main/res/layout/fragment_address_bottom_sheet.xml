@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.evapharma.limitless.presentation.checkout.address.bottomsheet.LocationViewModel" />
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+
+        >
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grey_200"
+                android:nestedScrollingEnabled="true"
+                >
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:fillViewport="true"
+                    app:layout_constraintBottom_toTopOf="@id/shared_card_view">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="true"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        tools:context=".presentation.checkout.address.bottomsheet.AddressBottomSheet">
+
+                        <TextView
+                            android:id="@+id/title_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/add_new_address_label"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_lg"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/cancel_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/cancel_label"
+                            android:textColor="@color/grey_dark"
+                            android:textSize="@dimen/font_md"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/title_tv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/title_tv" />
+
+                        <com.google.android.gms.maps.MapView
+                            android:id="@+id/map_view"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_130sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:alpha="0.7"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/title_tv" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/detect_my_location_btn"
+                            style="@style/Widget.Material3.Button.Icon"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_50sdp"
+                            android:layout_marginEnd="@dimen/_50sdp"
+                            android:backgroundTint="@android:color/transparent"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/detect_my_location_label"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/font_md"
+                            app:icon="@drawable/location_icon"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/green"
+                            app:layout_constraintBottom_toBottomOf="@id/map_view"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/map_view"
+                            app:strokeColor="@color/green_100"
+                            app:strokeWidth="@dimen/_1sdp" />
+
+
+                        <TextView
+                            android:id="@+id/address_name_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/address_name_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/map_view" />
+
+                        <EditText
+                            android:id="@+id/address_name_edit_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/background_edittxt"
+                            android:hint="@string/address_name_hint"
+                            android:inputType="text"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/address_name_label" />
+
+
+                        <TextView
+                            android:id="@+id/street_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/street_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/address_name_edit_txt" />
+
+                        <EditText
+                            android:id="@+id/street_edit_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_50sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/background_edittxt"
+                            android:hint="@string/street_name_label"
+                            android:inputType="textMultiLine"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/street_label" />
+
+
+                        <TextView
+                            android:id="@+id/city_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/city_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintStart_toStartOf="@id/city_edit_txt"
+                            app:layout_constraintTop_toBottomOf="@id/street_edit_txt" />
+
+                        <EditText
+                            android:id="@+id/city_edit_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:background="@drawable/background_edittxt"
+                            android:hint="@string/city_hint"
+                            android:inputType="text"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintEnd_toStartOf="@id/area_edit_txt"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/city_label" />
+
+
+                        <TextView
+                            android:id="@+id/area_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/area_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintStart_toStartOf="@id/area_edit_txt"
+                            app:layout_constraintTop_toBottomOf="@id/street_edit_txt" />
+
+                        <EditText
+                            android:id="@+id/area_edit_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/background_edittxt"
+                            android:hint="@string/area_hint"
+                            android:inputType="text"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/city_edit_txt"
+                            app:layout_constraintTop_toBottomOf="@id/area_label" />
+
+
+                        <TextView
+                            android:id="@+id/building_number_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/building_number_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/city_edit_txt" />
+
+                        <EditText
+                            android:id="@+id/building_number_edit_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:background="@drawable/background_edittxt"
+                            android:hint="@string/building_number_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintEnd_toStartOf="@id/apartment_number_edit_txt"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/building_number_label" />
+
+                        <TextView
+                            android:id="@+id/apartment_number_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/apartment_number_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintStart_toStartOf="@id/apartment_number_edit_txt"
+                            app:layout_constraintTop_toBottomOf="@id/city_edit_txt" />
+
+                        <EditText
+                            android:id="@+id/apartment_number_edit_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/background_edittxt"
+                            android:hint="@string/apartment_number_hint"
+                            android:inputType="numberDecimal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:textSize="@dimen/_12ssp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/building_number_edit_txt"
+                            app:layout_constraintTop_toBottomOf="@id/building_number_label" />
+
+
+                        <TextView
+                            android:id="@+id/mobile_number_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@string/mobile_number_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/apartment_number_edit_txt" />
+
+                        <com.hbb20.CountryCodePicker
+                            android:id="@+id/countryCodePicker"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="wrap_content"
+                            app:ccp_autoDetectCountry="true"
+                            app:ccp_defaultPhoneCode="20"
+                            app:ccp_showNameCode="false"
+                            app:layout_constraintBottom_toBottomOf="@+id/mobile_number_edit_txt"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/mobile_number_edit_txt" />
+
+
+                        <EditText
+                            android:id="@+id/mobile_number_edit_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/background_edittxt"
+                            android:hint="mobile.."
+                            android:inputType="phone"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/countryCodePicker"
+                            app:layout_constraintTop_toBottomOf="@id/mobile_number_label" />
+
+                        <TextView
+                            android:id="@+id/default_address_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@string/save_as_a_default_address_label"
+                            android:textColor="@color/black500"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/mobile_number_edit_txt"
+                            app:layout_constraintVertical_bias="0" />
+
+                        <Switch
+                            android:id="@+id/default_address_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="@id/default_address_label"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/default_address_label"
+                            tools:ignore="UseSwitchCompatOrMaterialXml"
+
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shared_card_view"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_70sdp"
+                    android:elevation="1dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <Button
+                        android:id="@+id/save_address_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="@drawable/background_checkout_button"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/save_address_label"
+                        android:textColor="@color/white" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="address"
+            type="com.evapharma.limitless.domain.model.AddressWithoutPhoneNumber" />
+
+        <variable
+            name="summary"
+            type="com.evapharma.limitless.domain.model.Summary" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_200"
+        tools:context=".presentation.checkout.summary.SummaryFragment">
+
+
+        <TextView
+            android:id="@+id/change_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="Change"
+            android:textColor="@color/green"
+            android:textSize="@dimen/font_lg"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/Payment"
+            app:layout_constraintRight_toRightOf="@+id/change_address"
+            app:layout_constraintTop_toTopOf="@+id/Payment" />
+
+        <LinearLayout
+            android:id="@+id/ll_checkout_address_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/text_background"
+            android:orientation="vertical"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="@+id/change_address"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+            <TextView
+                android:id="@+id/tv_checkout_address_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/address_details_marginTop"
+                android:paddingBottom="@dimen/address_details_marginTop"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/address_details_textSize"
+                android:textStyle="bold"
+                android:text="@{address.addressName}" />
+
+
+            <TextView
+                android:id="@+id/tv_checkout_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_4sdp"
+                android:text="@{address.city +`, `+address.area+ `, ` + address.street}"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/address_details_textSize"
+                app:drawableStartCompat="@drawable/ic_delivery_address"
+                app:drawableTint="@color/colorSecondaryText" />
+
+            <TextView
+                android:id="@+id/tv_checkout_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawablePadding="@dimen/_4sdp"
+                android:drawableTint="@color/colorSecondaryText"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="@dimen/font_md"
+                android:text="+64 123456789"
+                app:drawableStartCompat="@drawable/phone_24" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/Payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/payment_method"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_lg"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/ll_checkout_address_details" />
+
+        <TextView
+            android:id="@+id/cash_on_delivery_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/cash_on_delivery_label"
+            android:textColor="@color/green"
+            android:textSize="@dimen/font_md"
+            app:layout_constraintStart_toStartOf="@id/textView12"
+            app:layout_constraintTop_toBottomOf="@id/Payment" />
+
+
+        <LinearLayout
+            android:id="@+id/LV_pay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/text_background"
+            android:orientation="vertical"
+            android:padding="@dimen/_8sdp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/ll_checkout_address_details"
+            app:layout_constraintStart_toStartOf="@+id/ll_checkout_address_details"
+            app:layout_constraintTop_toBottomOf="@+id/Payment">
+
+            <TextView
+                android:id="@+id/PaymentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/address_details_marginTop"
+                android:paddingBottom="@dimen/address_details_marginTop"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/address_details_textSize"
+                android:textStyle="bold"
+                android:text="Credit Cart" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/CardNumber"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/address_details_marginTop"
+                    android:drawableStart="@drawable/credit_card_24"
+                    android:drawableTint="@color/colorSecondaryText"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/address_details_textSize"
+                    android:text="....15546" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/address_details_textSize"
+                    android:text="day/month/year" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/ed_promo_code"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:background="@drawable/home_search_shape"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/promo_hint"
+            android:textColor="@color/black"
+            android:textColorHint="@color/grey_500"
+            app:layout_constraintRight_toLeftOf="@+id/tv_apply_promo"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="@string/payment_summary"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_lg"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/textView12"
+            app:layout_constraintTop_toBottomOf="@id/ed_promo_code" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="107dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:orientation="vertical"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="@+id/ll_checkout_address_details"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/_4sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/lbl_subtotal"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="@dimen/checkout_label_value_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_checkout_sub_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@{summary.currency + ` ` + summary.subTotal}"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/checkout_label_value_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/lbl_shipping_charge"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="@dimen/checkout_label_value_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_checkout_shipping_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/checkout_label_value_textSize"
+                    android:text="@{summary.currency + ` ` + summary.deliveryFee}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/_4sdp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_amount"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="@dimen/checkout_label_value_textSize" />
+
+                <TextView
+                    android:id="@+id/tv_checkout_total_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="@dimen/checkout_label_value_textSize"
+                    android:text="@{summary.currency + ` ` + summary.total}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/promo_code"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_lg"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/cash_on_delivery_tv" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_12sdp"
+            android:text="@string/shipping_to"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_lg"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/change_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_12sdp"
+            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:text="@string/change"
+            android:textColor="@color/green"
+            android:textSize="@dimen/font_lg"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_apply_promo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/apply"
+            android:textColor="@color/green"
+            android:textSize="@dimen/font_lg"
+            app:layout_constraintBottom_toBottomOf="@id/ed_promo_code"
+            app:layout_constraintEnd_toEndOf="@+id/change_address"
+            app:layout_constraintTop_toTopOf="@+id/ed_promo_code" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_place_order"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="@dimen/_16sdp"
+            android:text="@string/place_order"
+            android:gravity="center"
+            android:textSize="@dimen/font_md"
+            android:textColor="@color/white"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/checkout_shape"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:alpha="0.5"
+            android:id="@+id/summary_progress_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/summary_progress"
+            android:visibility="gone"
+            />
+
+    </FrameLayout>
+</layout>
+

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/_12sdp"
+    >
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/_95sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:id="@+id/cardView_cart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@id/edit_quantity"
+        android:layout_marginBottom="@dimen/_12sdp"
+        >
+
+        <ImageView
+            android:id="@+id/img_cart_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_search" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_md"
+        android:fontFamily="@font/roboto_bold"
+        tools:text="this is a title for a product and bla and bla bla bla bla"
+        app:layout_constraintLeft_toRightOf="@id/cardView_cart"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/tv_cart_product_title"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="@dimen/font_sm"
+        android:fontFamily="@font/roboto"
+        tools:text="20 tablets"
+        android:layout_marginTop="@dimen/_2sdp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_cart_product_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_cart_product_title"
+        app:layout_constraintRight_toRightOf="@id/tv_cart_product_title"
+        android:id="@+id/tv_tablets_num"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        tools:text="45 EGP"
+        android:textSize="@dimen/font_md"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintLeft_toLeftOf="@id/tv_cart_product_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_tablets_num"
+        android:id="@+id/tv_product_price"
+
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cart_discount"
+        app:constraint_referenced_ids="tv_old_price, tv_discount_percent"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="@dimen/font_md"
+        android:fontFamily="@font/roboto"
+        tools:text="@string/price"
+        app:layout_constraintLeft_toLeftOf="@id/tv_cart_product_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_price"
+        android:id="@+id/tv_old_price"
+        />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/green"
+        android:textSize="@dimen/font_md"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintTop_toTopOf="@id/tv_old_price"
+        app:layout_constraintBottom_toBottomOf="@id/tv_old_price"
+        app:layout_constraintLeft_toRightOf="@id/tv_old_price"
+        android:id="@+id/tv_discount_percent"
+        tools:text="Save 20%"
+        android:layout_marginStart="@dimen/_8sdp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_category_offers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/green"
+        android:textSize="@dimen/font_md"
+        android:fontFamily="@font/roboto_medium"
+        android:visibility="gone"
+        tools:text="buy 1 get 1 free"
+        app:layout_constraintLeft_toLeftOf="@id/tv_cart_product_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_old_price"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/cardView_cart"
+        app:layout_constraintLeft_toLeftOf="@id/tv_cart_product_title"
+        android:background="@drawable/edit_quantity_shape"
+        android:padding="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_price"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:id="@+id/edit_quantity"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:src="@drawable/minus_icon"
+            android:id="@+id/decrease_quantity"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="01"
+            android:textSize="@dimen/font_md"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/black"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:id="@+id/cart_product_quantity"
+            />
+        <ImageView
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:src="@drawable/plus_icon"
+            android:id="@+id/increase_quantity"
+            />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="cart_sub, cart_sub_text, sub_switch"
+        android:visibility="gone"
+        android:id="@+id/monthly_sub_view"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/monthly_subscription"
+        android:id="@+id/cart_sub"
+        android:textSize="@dimen/font_lg"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:fontFamily="@font/roboto_medium"
+        app:layout_constraintTop_toBottomOf="@id/cardView_cart"
+        android:layout_marginTop="@dimen/_12sdp"
+        />
+
+
+    <TextView
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="wrap_content"
+        android:text="@string/cart_sub_text"
+        android:id="@+id/cart_sub_text"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="@dimen/font_md"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cart_sub"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@id/divider"
+        android:layout_marginBottom="@dimen/_12sdp"
+        />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/cart_sub"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cart_sub"
+        android:id="@+id/sub_switch"
+        />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="wrap_content"
+        android:layout_height="0.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/divider"
+        app:dividerColor="@color/grey_500"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/like_white"
+    tools:context=".presentation.category.CategoryFragment">
+
+
+    <androidx.constraintlayout.widget.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="category_appbar, ed_category_search"
+        android:id="@+id/category_group"
+        />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/category_appbar"
+        android:background="@color/like_white"
+        android:elevation="0dp"
+        >
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_back"
+            app:menu="@menu/category_menu"
+            android:id="@+id/category_toobar"
+            android:elevation="0dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/category_name"
+                tools:text="Immunity"
+                android:textSize="@dimen/font_lg"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/black"
+                />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/ed_category_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_12sdp"
+        android:background="@drawable/home_search_shape"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="@dimen/_4sdp"
+        android:elevation="1dp"
+        android:hint="@string/home_search"
+        android:maxLines="1"
+        android:textSize="@dimen/font_md"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/category_appbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@id/ed_category_search"
+        app:layout_constraintLeft_toLeftOf="@id/ed_category_search"
+        app:layout_constraintTop_toBottomOf="@id/ed_category_search"
+        android:fillViewport="true"
+        >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:id="@+id/category_detail_root"
+           >
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rv_category"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:paddingStart="@dimen/_6sdp"
+               android:paddingTop="@dimen/_12sdp"
+               android:paddingEnd="@dimen/_6sdp"
+               android:paddingBottom="@dimen/_12sdp"
+               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/other_products"
+               android:fontFamily="@font/roboto_bold"
+               android:textColor="@color/black"
+               android:textSize="@dimen/font_lg"
+               android:layout_marginStart="@dimen/_12sdp"
+               android:layout_marginEnd="@dimen/_12sdp"
+               android:id="@+id/tv_other_products"
+               />
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rv_category_other"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:layout_marginTop="@dimen/_12sdp"
+               android:layout_marginBottom="@dimen/_12sdp"
+               android:layout_marginStart="@dimen/_8sdp"
+               android:layout_marginEnd="@dimen/_8sdp"
+               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+               />
+       </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <ProgressBar
+        android:id="@+id/category_progress"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="center"
+        android:background="@drawable/circle_drawable"
+        android:padding="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

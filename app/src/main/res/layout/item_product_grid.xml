@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="product"
+            type="com.evapharma.limitless.domain.model.Product" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/grey_200">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/product_image_card"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_115sdp"
+            app:cardElevation="1dp"
+            app:cardCornerRadius="@dimen/_3sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:url="@{product.imageUrl}" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="start"
+            android:maxLines="2"
+            android:text="@{product.name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintEnd_toEndOf="@id/product_image_card"
+            app:layout_constraintStart_toStartOf="@id/product_image_card"
+            app:layout_constraintTop_toBottomOf="@id/product_image_card"
+
+            />
+
+        <TextView
+            android:id="@+id/product_size_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:fontFamily="@font/roboto"
+            android:text="20 Capsules"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="@id/product_image_card"
+            app:layout_constraintTop_toBottomOf="@id/product_image_card" />
+
+        <TextView
+            android:id="@+id/currentPrice_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{product.currency+` ` + String.valueOf(product.price)}"
+            android:textColor="@color/black500"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="@id/product_image_card"
+            app:layout_constraintTop_toBottomOf="@id/product_size_tv" />
+
+        <TextView
+            android:id="@+id/oldPrice_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@drawable/cross_off_line"
+            android:fontFamily="@font/roboto"
+            android:text="@{product.currency + ` ` + String.valueOf(product.oldPrice)}"
+            android:textColor="@color/grey_700"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toStartOf="@id/product_image_card"
+            app:layout_constraintTop_toBottomOf="@id/currentPrice_tv" />
+
+        <TextView
+            android:id="@+id/discount_percent_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:fontFamily="@font/roboto"
+            android:text="@{`Save ` + String.valueOf(product.discountPercentage) + `%`}"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintStart_toEndOf="@id/oldPrice_tv"
+            app:layout_constraintTop_toTopOf="@id/oldPrice_tv" />
+
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="0dp"
+            android:id="@+id/add_to_cart_btn"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:backgroundTint="@android:color/transparent"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/add_to_cart_label"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:textColor="@color/green_100"
+            android:textSize="@dimen/font_md"
+            app:icon="@drawable/ic_buy"
+            app:iconGravity="textStart"
+            app:iconTint="@color/green_100"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/product_image_card"
+            app:layout_constraintStart_toStartOf="@id/product_image_card"
+            app:layout_constraintTop_toBottomOf="@id/oldPrice_tv"            app:strokeColor="@color/green_100"
+            app:strokeWidth="@dimen/_1sdp" />
+
+        <ProgressBar
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            app:layout_constraintTop_toTopOf="@id/add_to_cart_btn"
+            app:layout_constraintBottom_toBottomOf="@id/add_to_cart_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:id="@+id/progress_bar"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/added_to_cart_label"
+            app:layout_constraintTop_toTopOf="@id/add_to_cart_btn"
+            app:layout_constraintBottom_toBottomOf="@id/add_to_cart_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/green"
+            android:fontFamily="@font/roboto"
+            android:id="@+id/added_to_cart_tv"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/customer_nav_graph"
+    app:startDestination="@id/loginandSignupFragment2">
+
+    <fragment
+        android:id="@+id/loginandSignupFragment2"
+        android:name="com.evapharma.limitless.presentation.loginandsignup.LoginandSignupFragment"
+        android:label="fragment_loginand_signup"
+        tools:layout="@layout/fragment_loginand_signup" >
+        <action
+            android:id="@+id/action_loginandSignupFragment2_to_signinUsingMobileNumberFragment2"
+            app:destination="@id/signinUsingMobileNumberFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/signinUsingMobileNumberFragment2"
+        android:name="com.evapharma.limitless.presentation.loginandsignup.signinusingmobilefragment.SigninUsingMobileNumberFragment"
+        android:label="fragment_signin_using_mobile_number"
+        tools:layout="@layout/fragment_signin_using_mobile_number" >
+        <action
+            android:id="@+id/action_signinUsingMobileNumberFragment2_to_otpFragment"
+            app:destination="@id/otpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otpFragment"
+        android:name="com.evapharma.limitless.presentation.loginandsignup.signinusingmobilefragment.OtpFragment"
+        android:label="fragment_o_t_p_"
+        tools:layout="@layout/fragment_o_t_p_" >
+        <argument
+            android:name="accessToken"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_otpFragment_to_checkoutActivity"
+            app:destination="@id/checkoutActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/checkoutActivity"
+        android:name="com.evapharma.limitless.presentation.checkout.CheckoutActivity"
+        android:label="activity_checkout"
+        tools:layout="@layout/activity_checkout" />
+</navigation>
